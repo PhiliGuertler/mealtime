@@ -30,9 +30,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_animate: ^4.5.2
   flutter_localizations:
     sdk: flutter
+  flutter_native_splash: ^2.4.4
   flutter_riverpod: ^2.6.1
+  flutter_sharing_intent: ^1.1.1
   freezed_annotation: ^2.4.4
   intl: any
   json_annotation: ^4.9.0
