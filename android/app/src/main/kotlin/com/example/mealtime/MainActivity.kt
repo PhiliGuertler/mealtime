@@ -1,4 +1,4 @@
-package com.example.mealtime
+package org.philipp_guertler.mealtime
 
 import io.flutter.embedding.android.FlutterActivity
 
