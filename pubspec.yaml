@@ -28,6 +28,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  animations: ^2.0.11
   flutter:
     sdk: flutter
   flutter_animate: ^4.5.2
@@ -41,10 +42,12 @@ dependencies:
   json_annotation: ^4.9.0
   misc_utils:
     path: packages/misc_utils
+  package_info_plus: ^8.2.1
   riverpod: ^2.6.1
   riverpod_annotation: ^2.6.1
   theming:
     path: packages/theming
+  url_launcher: ^6.3.1
 
 dev_dependencies:
   flutter_test:
