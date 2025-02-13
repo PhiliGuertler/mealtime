@@ -4,6 +4,7 @@ import 'package:mealtime/features/settings/about/screens/about_screen.dart';
 import 'package:mealtime/features/settings/appearance/screens/appearance_screen.dart';
 import 'package:mealtime/features/settings/language/screens/language_screen.dart';
 import 'package:mealtime/l10n/generated/app_localizations.dart';
+import 'package:mealtime/models/assets.dart';
 import 'package:mealtime/providers/debug_provider.dart';
 import 'package:mealtime/utils/constants.dart';
 import 'package:misc_utils/misc_utils.dart';
@@ -28,10 +29,10 @@ class SettingsScreen extends ConsumerWidget {
         ),
         controller: scrollController,
         slivers: [
-          // SliverFancyImageHeader(
-          //   imagePath: ImageAssets.gear.value,
-          //   height: 250,
-          // ),
+          SliverFancyImageHeader(
+            imagePath: ImageAssets.settings.value,
+            height: 250,
+          ),
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.only(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mealtime/l10n/generated/app_localizations.dart';
+import 'package:mealtime/models/assets.dart';
 import 'package:mealtime/providers/ingredients/ingredients_provider.dart';
 import 'package:mealtime/utils/constants.dart';
 import 'package:mealtime/widgets/error_display.dart';
@@ -33,12 +34,9 @@ class IngredientsScreen extends ConsumerWidget {
                 : null,
             slivers: [
               if (!hasIngredients)
-                // SliverFancyImageHeader(
-                //   imagePath: ImageAssets.gamePile.value,
-                //   height: 300.0,
-                // ),
-                SliverToBoxAdapter(
-                  child: Placeholder(),
+                SliverFancyImageHeader(
+                  imagePath: ImageAssets.ingredients.value,
+                  height: 300.0,
                 ),
               if (!hasIngredients)
                 SliverToBoxAdapter(
