@@ -8,7 +8,7 @@ void main() async {
   final providerContainer = ProviderContainer(
     overrides: [
       defaultAppColorProvider
-          .overrideWithValue(const Color.fromARGB(255, 6, 78, 202)),
+          .overrideWithValue(const Color.fromRGBO(83, 147, 255, 1)),
     ],
   );
 
