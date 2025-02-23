@@ -1,10 +1,15 @@
 enum ImageAssets {
-  calendar(value: 'assets/calendar.jpg'),
-  ingredients(value: 'assets/ingredients.jpg'),
-  intolerance(value: 'assets/intolerance.jpg'),
-  recipe(value: 'assets/recipe.jpg'),
-  search(value: 'assets/search.jpg'),
-  settings(value: 'assets/settings.jpg'),
+  // App
+  appLogo(value: 'assets/app/logo.png'),
+  appLogoForeground(value: 'assets/app/logo_foreground.png'),
+  appLogoSplash(value: 'assets/app/logo_splash.png'),
+  // Images
+  calendar(value: 'assets/iamges/calendar.jpg'),
+  ingredients(value: 'assets/images/ingredients.jpg'),
+  intolerance(value: 'assets/images/intolerance.jpg'),
+  recipe(value: 'assets/images/recipe.jpg'),
+  search(value: 'assets/images/search.jpg'),
+  settings(value: 'assets/images/settings.jpg'),
   ;
 
   final String value;
