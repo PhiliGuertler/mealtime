@@ -1,8 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:mealtime/features/ingredients/models/ingredients_models.dart';
 import 'package:mealtime/l10n/generated/app_localizations.dart';
 
-part 'intolerances_models.freezed.dart';
-part 'intolerances_models.g.dart';
+part "intolerance_models.freezed.dart";
+part "intolerance_models.g.dart";
 
 enum IntoleranceReaction {
   none,
@@ -31,19 +32,32 @@ enum IntoleranceReaction {
 }
 
 @freezed
+class IngredientReaction with _$IngredientReaction {
+  const factory IngredientReaction({
+    /// A list of ingredients that cause the intolerance when combined.
+    required List<Ingredient> ingredients,
+    required Intolerance intolerance,
+  }) = _IngredientReaction;
+  const IngredientReaction._();
+
+  factory IngredientReaction.fromJson(Map<String, dynamic> json) =>
+      _$IngredientReactionFromJson(json);
+}
+
+@freezed
 class Intolerance with _$Intolerance {
   const factory Intolerance({
-    /// Id of the intolerance
+    /// The unique identifier of the intolerance.
     required String id,
 
     /// Last time the intolerance was modified
     required DateTime lastModified,
 
-    /// Name of the intolerance
+    /// The name of the intolerance.
     required String name,
 
-    /// Map of ingredient-IDs and their reaction to the intolerance
-    required Map<String, IntoleranceReaction> ingredientsMap,
+    /// A list of ingredient reactions that cause the intolerance (or don't).
+    required List<IngredientReaction> reactions,
 
     /// Whether the intolerance is a whitelist or blacklist
     @Default(false) bool isWhitelist,

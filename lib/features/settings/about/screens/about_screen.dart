@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mealtime/l10n/generated/app_localizations.dart';
+import 'package:mealtime/models/assets.dart';
 import 'package:mealtime/utils/constants.dart';
 import 'package:mealtime/widgets/app_scaffold.dart';
+import 'package:mealtime/widgets/fade_in_image_asset.dart';
 import 'package:misc_utils/misc_utils.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -43,8 +45,8 @@ class AboutScreen extends StatelessWidget {
                       showAboutDialog(
                         context: context,
                         applicationIcon: const ImageContainer(
-                            // child: FadeInImageAsset(asset: ImageAssets.appLogo),
-                            child: Placeholder()),
+                          child: FadeInImageAsset(asset: ImageAssets.appLogo),
+                        ),
                         applicationName: info.appName,
                         applicationVersion:
                             "${info.version} (${info.buildNumber})",
@@ -54,10 +56,9 @@ class AboutScreen extends StatelessWidget {
                                 BorderRadius.circular(defaultBorderRadius),
                             child: const SizedBox(
                               height: 200,
-                              // child: FadeInImageAsset(
-                              //   asset: ImageAssets.loading,
-                              // ),
-                              child: Placeholder(),
+                              child: FadeInImageAsset(
+                                asset: ImageAssets.ingredients,
+                              ),
                             ),
                           ),
                         ],
@@ -69,7 +70,7 @@ class AboutScreen extends StatelessWidget {
                   title: Text(AppLocalizations.of(context)!.imageCredit),
                   subtitle: Text(
                     AppLocalizations.of(context)!
-                        .imagesOfControllersHaveBeenCreatedUsingMidjourney,
+                        .imagesOfControllersHaveBeenCreatedUsingAI,
                   ),
                   trailing: const SizedBox(),
                 ),
@@ -80,7 +81,7 @@ class AboutScreen extends StatelessWidget {
                 horizontal: defaultPaddingX,
                 vertical: 16.0,
               ),
-              child: Text(AppLocalizations.of(context)!.pileOfShameWhatAreYou),
+              child: Text(AppLocalizations.of(context)!.mealtimeWhatAreYou),
             ),
           ],
         ),

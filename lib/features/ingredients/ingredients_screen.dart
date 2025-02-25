@@ -46,8 +46,7 @@ class IngredientsScreen extends ConsumerWidget {
                       vertical: 16.0,
                     ),
                     child: Text(
-                      AppLocalizations.of(context)!
-                          .buildYourPileOfShameByAddingNewGames,
+                      AppLocalizations.of(context)!.appName,
                       style: Theme.of(context).textTheme.headlineSmall,
                       textAlign: TextAlign.center,
                     ),

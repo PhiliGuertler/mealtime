@@ -173,7 +173,7 @@ class SettingsScreen extends ConsumerWidget {
                       builder: (context) => AlertDialog.adaptive(
                         title: Text(
                           AppLocalizations.of(context)!
-                              .deleteAllGamesAndHardware,
+                              .deleteAllRecipesAndCustomValues,
                         ),
                         content: Text(
                           AppLocalizations.of(context)!

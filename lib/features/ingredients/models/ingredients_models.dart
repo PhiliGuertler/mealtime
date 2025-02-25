@@ -4,54 +4,86 @@ import 'package:mealtime/l10n/generated/app_localizations.dart';
 part 'ingredients_models.freezed.dart';
 part 'ingredients_models.g.dart';
 
-enum IngredientCategory {
-  alcohol,
-  beverage,
-  dairy,
-  fish,
-  fruit,
-  grain,
-  herb,
-  meat,
-  mushroom,
-  nuts,
-  oil,
-  other,
-  spice,
-  vegetable;
+@freezed
+class IngredientCategory with _$IngredientCategory {
+  const factory IngredientCategory({
+    required String id,
+    required String name,
+  }) = _IngredientCategory;
 
-  String toLocaleString(AppLocalizations l10n) {
-    switch (this) {
-      case IngredientCategory.alcohol:
-        return l10n.alcohol;
-      case IngredientCategory.beverage:
-        return l10n.beverage;
-      case IngredientCategory.dairy:
-        return l10n.dairy;
-      case IngredientCategory.fish:
-        return l10n.fish;
-      case IngredientCategory.fruit:
-        return l10n.fruit;
-      case IngredientCategory.grain:
-        return l10n.grain;
-      case IngredientCategory.herb:
-        return l10n.herb;
-      case IngredientCategory.meat:
-        return l10n.meat;
-      case IngredientCategory.mushroom:
-        return l10n.mushroom;
-      case IngredientCategory.nuts:
-        return l10n.nuts;
-      case IngredientCategory.oil:
-        return l10n.oil;
-      case IngredientCategory.other:
-        return l10n.other;
-      case IngredientCategory.spice:
-        return l10n.spice;
-      case IngredientCategory.vegetable:
-        return l10n.vegetable;
-    }
-  }
+  factory IngredientCategory.fromJson(Map<String, dynamic> json) =>
+      _$IngredientCategoryFromJson(json);
+
+  // ### Predefined categories ############################################## //
+
+  static IngredientCategory alcohol(AppLocalizations l10n) =>
+      IngredientCategory(
+        id: '550e8400-e29b-41d4-a716-446655440000',
+        name: l10n.alcohol,
+      );
+
+  static IngredientCategory beverage(AppLocalizations l10n) =>
+      IngredientCategory(
+        id: '550e8400-e29b-41d4-a716-446655440001',
+        name: l10n.beverage,
+      );
+
+  static IngredientCategory dairy(AppLocalizations l10n) => IngredientCategory(
+        id: '550e8400-e29b-41d4-a716-446655440002',
+        name: l10n.dairy,
+      );
+
+  static IngredientCategory fish(AppLocalizations l10n) => IngredientCategory(
+        id: '550e8400-e29b-41d4-a716-446655440003',
+        name: l10n.fish,
+      );
+
+  static IngredientCategory fruit(AppLocalizations l10n) => IngredientCategory(
+        id: '550e8400-e29b-41d4-a716-446655440004',
+        name: l10n.fruit,
+      );
+
+  static IngredientCategory grain(AppLocalizations l10n) => IngredientCategory(
+        id: '550e8400-e29b-41d4-a716-446655440005',
+        name: l10n.grain,
+      );
+
+  static IngredientCategory herb(AppLocalizations l10n) => IngredientCategory(
+        id: '550e8400-e29b-41d4-a716-446655440006',
+        name: l10n.herb,
+      );
+
+  static IngredientCategory meat(AppLocalizations l10n) => IngredientCategory(
+        id: '550e8400-e29b-41d4-a716-446655440007',
+        name: l10n.meat,
+      );
+
+  static IngredientCategory mushroom(AppLocalizations l10n) =>
+      IngredientCategory(
+        id: '550e8400-e29b-41d4-a716-446655440008',
+        name: l10n.mushroom,
+      );
+
+  static IngredientCategory nuts(AppLocalizations l10n) => IngredientCategory(
+        id: '550e8400-e29b-41d4-a716-446655440009',
+        name: l10n.nuts,
+      );
+
+  static IngredientCategory oil(AppLocalizations l10n) => IngredientCategory(
+        id: '550e8400-e29b-41d4-a716-446655440010',
+        name: l10n.oil,
+      );
+
+  static IngredientCategory spice(AppLocalizations l10n) => IngredientCategory(
+        id: '550e8400-e29b-41d4-a716-446655440011',
+        name: l10n.spice,
+      );
+
+  static IngredientCategory vegetable(AppLocalizations l10n) =>
+      IngredientCategory(
+        id: '550e8400-e29b-41d4-a716-446655440012',
+        name: l10n.vegetable,
+      );
 }
 
 @freezed
@@ -64,7 +96,6 @@ class Ingredient with _$Ingredient {
     required DateTime lastModified,
 
     /// Name of the ingredient
-    /// TODO: Add localizations for default ingredients
     required String name,
 
     /// Alternative names of the ingredient, e.g. plurals or "E420"
@@ -74,7 +105,7 @@ class Ingredient with _$Ingredient {
     @Default([]) List<IngredientCategory> categories,
 
     /// Ingredients that make up this ingredient, e.g. "chocolate" is made up of "cocoa" and "sugar"
-    /// Will only be set if categories is set to [IngredientCategory.compound]
+    /// Will only be set if categories contains IngredientCategory.compound
     @Default([]) List<String> compoundIngredients,
   }) = _Ingredient;
 
