@@ -22,6 +22,7 @@
   "dark": "Dunkel",
   "dateAtTime": "{date} um {time} Uhr",
   "delete": "Löschen",
+  "deleteAllRecipesAndCustomValues": "Alle Rezepte und nutzerdefinierten Werte löschen",
   "deleteDatabase": "Datenbank löschen",
   "descending": "absteigend",
   "exportAll": "Alle exportieren",

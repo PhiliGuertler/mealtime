@@ -34,6 +34,7 @@
   "dark": "Dark",
   "dateAtTime": "{date} at {time} o'clock",
   "delete": "delete",
+  "deleteAllRecipesAndCustomValues": "Delete all recipes and custom values",
   "deleteDatabase": "Delete database",
   "descending": "descending",
   "exportAll": "Export all",
