@@ -69,7 +69,7 @@ class AboutScreen extends StatelessWidget {
                   title: Text(AppLocalizations.of(context)!.imageCredit),
                   subtitle: Text(
                     AppLocalizations.of(context)!
-                        .imagesOfControllersHaveBeenCreatedUsingMidjourney,
+                        .imagesOfControllersHaveBeenCreatedUsingAI,
                   ),
                   trailing: const SizedBox(),
                 ),
@@ -80,7 +80,7 @@ class AboutScreen extends StatelessWidget {
                 horizontal: defaultPaddingX,
                 vertical: 16.0,
               ),
-              child: Text(AppLocalizations.of(context)!.pileOfShameWhatAreYou),
+              child: Text(AppLocalizations.of(context)!.mealtimeWhatAreYou),
             ),
           ],
         ),
