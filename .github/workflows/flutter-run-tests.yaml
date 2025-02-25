@@ -1,0 +1,55 @@
+name: flutter-build-and-run-tests
+on:
+  pull_request:
+    branches:
+      - master
+      - main
+
+jobs:
+  test_and_build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+        # Setup environment
+      - name: Java - setup SDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: "zulu"
+          java-version: "17.x"
+          cache: gradle
+      - name: Flutter - setup SDK
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+        # Fetch dependencies and generate code
+        ## packages
+        ### theming
+      - name: theming - fetch dependencies
+        working-directory: ./packages/theming
+        run: flutter pub get
+      - name: theming - generate code using build_runner
+        working-directory: ./packages/theming
+        run: dart run build_runner build
+        ### misc_utils
+      - name: misc_utils - fetch dependencies
+        working-directory: ./packages/misc_utils
+        run: flutter pub get
+      - name: misc_utils - generate code using build_runner
+        working-directory: ./packages/misc_utils
+        run: dart run build_runner build
+        ## mealtime
+      - name: mealtime - fetch dependencies
+        run: flutter pub get
+      - name: mealtime - generate Localizations
+        run: flutter gen-l10n
+      - name: mealtime - generate code using build_runner
+        run: dart run build_runner build
+        # Check if the application can build
+      - name: Flutter - build application
+        run: flutter build appbundle --debug
+        # Run unit tests
+      - name: Flutter - run unit tests
+        run: flutter test
