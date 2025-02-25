@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:mealtime/features/ingredients/models/database_storage.dart';
+import 'package:mealtime/models/database_storage.dart';
 import 'package:mealtime/models/database.dart';
 import 'package:mealtime/providers/database/database_file_provider.dart';
 import 'package:mealtime/utils/database_migrator.dart';
