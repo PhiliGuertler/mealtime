@@ -52,7 +52,7 @@ jobs:
       - name: Android App-Signing - prepare secrets directory
         run: mkdir -p secrets
       - name: Android App-Signing - insert secret upload keystore
-        run: echo -n "${{secrets.UPLOAD_KEYSTORE_BASE64}}" | base64 --decode > ./secrets/upload-keystore.jks
+        run: echo -n "${{secrets.UPLOAD_KEYSTORE_BASE64}}" | base64 --decode > ./secrets/mealtime-keystore.jks
       - name: Android App-Signing - insert secret key properties
         run: echo -n "${{secrets.KEY_PROPERTIES_BASE64}}" | base64 --decode > ./android/key.properties
       - name: Flutter - build application
