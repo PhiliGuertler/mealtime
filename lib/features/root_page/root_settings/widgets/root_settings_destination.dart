@@ -4,7 +4,7 @@ import 'package:mealtime/l10n/generated/app_localizations.dart';
 
 NavigationDestination rootSettingsDestination(BuildContext context) {
   return NavigationDestination(
-    key: const ValueKey('settings'),
+    key: const ValueKey('root_settings'),
     icon: const Icon(Icons.settings_outlined),
     selectedIcon: const Icon(Icons.settings_rounded)
         .animate()
