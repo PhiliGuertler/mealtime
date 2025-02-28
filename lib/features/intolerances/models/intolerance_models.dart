@@ -6,7 +6,7 @@ import 'package:mealtime/models/identifiable.dart';
 part "intolerance_models.freezed.dart";
 part "intolerance_models.g.dart";
 
-enum IntoleranceReaction {
+enum IntoleranceReactionSeverity {
   none,
   fineInModeration,
   unpleasant,
@@ -16,17 +16,17 @@ enum IntoleranceReaction {
 
   String toLocaleString(AppLocalizations l10n) {
     switch (this) {
-      case IntoleranceReaction.none:
+      case IntoleranceReactionSeverity.none:
         return l10n.none;
-      case IntoleranceReaction.fineInModeration:
+      case IntoleranceReactionSeverity.fineInModeration:
         return l10n.fineInModeration;
-      case IntoleranceReaction.unpleasant:
+      case IntoleranceReactionSeverity.unpleasant:
         return l10n.unpleasant;
-      case IntoleranceReaction.painful:
+      case IntoleranceReactionSeverity.painful:
         return l10n.painful;
-      case IntoleranceReaction.dangerous:
+      case IntoleranceReactionSeverity.dangerous:
         return l10n.dangerous;
-      case IntoleranceReaction.unknown:
+      case IntoleranceReactionSeverity.unknown:
         return l10n.unknown;
     }
   }
@@ -36,8 +36,8 @@ enum IntoleranceReaction {
 class IngredientReaction with _$IngredientReaction {
   const factory IngredientReaction({
     /// A list of ingredients that cause the intolerance when combined.
-    required List<Ingredient> ingredients,
-    required Intolerance intolerance,
+    required List<String> ingredientIds,
+    required IntoleranceReactionSeverity severity,
   }) = _IngredientReaction;
   const IngredientReaction._();
 
@@ -71,5 +71,10 @@ class Intolerance with _$Intolerance implements Identifiable {
   @override
   String getId() {
     return id;
+  }
+
+  @override
+  DateTime getLastModified() {
+    return lastModified;
   }
 }
