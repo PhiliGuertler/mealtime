@@ -1,11 +1,14 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:mealtime/l10n/generated/app_localizations.dart';
+import 'package:mealtime/models/identifiable.dart';
 
 part "recipe_models.freezed.dart";
 part "recipe_models.g.dart";
 
 @freezed
-class RecipeIngredientQuantityModifier with _$RecipeIngredientQuantityModifier {
+class RecipeIngredientQuantityModifier
+    with _$RecipeIngredientQuantityModifier
+    implements Identifiable {
   const factory RecipeIngredientQuantityModifier({
     /// The unique identifier of the recipe ingredient quantity.
     required String id,
@@ -105,6 +108,11 @@ class RecipeIngredientQuantityModifier with _$RecipeIngredientQuantityModifier {
         name: l10n.pinches,
         abbreviation: l10n.pinchesAbbreviation,
       );
+
+  @override
+  String getId() {
+    return id;
+  }
 }
 
 @freezed
@@ -126,7 +134,7 @@ class RecipeIngredient with _$RecipeIngredient {
 }
 
 @freezed
-class Recipe with _$Recipe {
+class Recipe with _$Recipe implements Identifiable {
   const factory Recipe({
     /// The unique identifier of the recipe.
     required String id,
@@ -146,4 +154,9 @@ class Recipe with _$Recipe {
   const Recipe._();
 
   factory Recipe.fromJson(Map<String, dynamic> json) => _$RecipeFromJson(json);
+
+  @override
+  String getId() {
+    return id;
+  }
 }

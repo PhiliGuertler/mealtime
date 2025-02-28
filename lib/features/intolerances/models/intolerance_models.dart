@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:mealtime/features/ingredients/models/ingredients_models.dart';
 import 'package:mealtime/l10n/generated/app_localizations.dart';
+import 'package:mealtime/models/identifiable.dart';
 
 part "intolerance_models.freezed.dart";
 part "intolerance_models.g.dart";
@@ -45,7 +46,7 @@ class IngredientReaction with _$IngredientReaction {
 }
 
 @freezed
-class Intolerance with _$Intolerance {
+class Intolerance with _$Intolerance implements Identifiable {
   const factory Intolerance({
     /// The unique identifier of the intolerance.
     required String id,
@@ -66,4 +67,9 @@ class Intolerance with _$Intolerance {
 
   factory Intolerance.fromJson(Map<String, dynamic> json) =>
       _$IntoleranceFromJson(json);
+
+  @override
+  String getId() {
+    return id;
+  }
 }

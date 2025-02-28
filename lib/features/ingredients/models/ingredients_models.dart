@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:mealtime/l10n/generated/app_localizations.dart';
+import 'package:mealtime/models/identifiable.dart';
 
 part 'ingredients_models.freezed.dart';
 part 'ingredients_models.g.dart';
@@ -87,7 +88,7 @@ class IngredientCategory with _$IngredientCategory {
 }
 
 @freezed
-class Ingredient with _$Ingredient {
+class Ingredient with _$Ingredient implements Identifiable {
   const factory Ingredient({
     /// Id of the ingredient
     required String id,
@@ -117,4 +118,9 @@ class Ingredient with _$Ingredient {
 
   factory Ingredient.fromJson(Map<String, dynamic> json) =>
       _$IngredientFromJson(json);
+
+  @override
+  String getId() {
+    return id;
+  }
 }
