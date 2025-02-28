@@ -5,6 +5,7 @@ import 'package:mealtime/models/identifiable.dart';
 part 'ingredients_models.freezed.dart';
 part 'ingredients_models.g.dart';
 
+// TODO: Add categories to the database!
 @freezed
 class IngredientCategory with _$IngredientCategory {
   const factory IngredientCategory({
@@ -32,6 +33,11 @@ class IngredientCategory with _$IngredientCategory {
   static IngredientCategory dairy(AppLocalizations l10n) => IngredientCategory(
         id: '550e8400-e29b-41d4-a716-446655440002',
         name: l10n.dairy,
+      );
+
+  static IngredientCategory cheese(AppLocalizations l10n) => IngredientCategory(
+        id: '550e8400-e29b-41d4-a716-446655440042',
+        name: l10n.cheese,
       );
 
   static IngredientCategory fish(AppLocalizations l10n) => IngredientCategory(
@@ -103,11 +109,14 @@ class Ingredient with _$Ingredient implements Identifiable {
     @Default([]) List<String> aliases,
 
     /// Categories of the ingredient
-    @Default([]) List<IngredientCategory> categories,
+    @Default([]) List<String> categoryIds,
 
     /// Ingredients that make up this ingredient, e.g. "chocolate" is made up of "cocoa" and "sugar"
     /// Will only be set if categories contains IngredientCategory.compound
     @Default([]) List<String> compoundIngredients,
+
+    /// Path to an image of the ingredient that can be uploaded if the user wants to
+    String? imagePath,
   }) = _Ingredient;
 
   bool isCompound() {
