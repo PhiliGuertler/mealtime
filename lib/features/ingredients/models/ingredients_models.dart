@@ -123,4 +123,9 @@ class Ingredient with _$Ingredient implements Identifiable {
   String getId() {
     return id;
   }
+
+  @override
+  DateTime getLastModified() {
+    return lastModified;
+  }
 }
