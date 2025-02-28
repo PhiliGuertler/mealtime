@@ -11,7 +11,8 @@ enum IntoleranceReactionSeverity {
   unpleasant,
   painful,
   dangerous,
-  unknown;
+  unknown,
+  ;
 
   String toLocaleString(AppLocalizations l10n) {
     switch (this) {

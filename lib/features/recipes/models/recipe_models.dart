@@ -1,112 +1,87 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:mealtime/l10n/generated/app_localizations.dart';
 import 'package:mealtime/models/identifiable.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part "recipe_models.freezed.dart";
 part "recipe_models.g.dart";
 
-// TODO: Transform this to an enum, so that only the name will be stored in the json
-@freezed
-class RecipeIngredientQuantityModifier with _$RecipeIngredientQuantityModifier {
-  const factory RecipeIngredientQuantityModifier({
-    /// The unique identifier of the recipe ingredient quantity.
-    required String id,
+@JsonEnum(valueField: 'name')
+enum RecipeIngredientQuantityModifier {
+  milliliters(name: "ml"),
+  liters(name: "l"),
+  grams(name: "g"),
+  kilograms(name: "kg"),
+  teaspoons(name: "tsp"),
+  tablespoons(name: "tbsp"),
+  cups(name: "cup"),
+  ounces(name: "oz"),
+  pounds(name: "lb"),
+  pieces(name: "pcs"),
+  slices(name: "slices"),
+  pinches(name: "pinches");
 
-    /// The localized name of the quantity
-    required String name,
+  final String name;
 
-    /// The localized abbreviation of the quantity
-    required String abbreviation,
-  }) = _RecipeIngredientQuantity;
-  const RecipeIngredientQuantityModifier._();
+  const RecipeIngredientQuantityModifier({required this.name});
 
-  factory RecipeIngredientQuantityModifier.fromJson(
-          Map<String, dynamic> json) =>
-      _$RecipeIngredientQuantityModifierFromJson(json);
+  String toLocalizedAbbreviation(AppLocalizations l10n) {
+    switch (this) {
+      case RecipeIngredientQuantityModifier.milliliters:
+        return l10n.millilitersAbbreviation;
+      case RecipeIngredientQuantityModifier.liters:
+        return l10n.litersAbbreviation;
+      case RecipeIngredientQuantityModifier.grams:
+        return l10n.gramsAbbreviation;
+      case RecipeIngredientQuantityModifier.kilograms:
+        return l10n.kilogramsAbbreviation;
+      case RecipeIngredientQuantityModifier.teaspoons:
+        return l10n.teaspoonsAbbreviation;
+      case RecipeIngredientQuantityModifier.tablespoons:
+        return l10n.tablespoonsAbbreviation;
+      case RecipeIngredientQuantityModifier.cups:
+        return l10n.cupsAbbreviation;
+      case RecipeIngredientQuantityModifier.ounces:
+        return l10n.ouncesAbbreviation;
+      case RecipeIngredientQuantityModifier.pounds:
+        return l10n.poundsAbbreviation;
+      case RecipeIngredientQuantityModifier.pieces:
+        return l10n.piecesAbbreviation;
+      case RecipeIngredientQuantityModifier.slices:
+        return l10n.slicesAbbreviation;
+      case RecipeIngredientQuantityModifier.pinches:
+        return l10n.pinchesAbbreviation;
+    }
+  }
 
-  static RecipeIngredientQuantityModifier milliliters(AppLocalizations l10n) =>
-      RecipeIngredientQuantityModifier(
-        id: '123e4567-e89b-12d3-a456-426614174000',
-        name: l10n.milliliters,
-        abbreviation: l10n.millilitersAbbreviation,
-      );
-
-  static RecipeIngredientQuantityModifier liters(AppLocalizations l10n) =>
-      RecipeIngredientQuantityModifier(
-        id: '123e4567-e89b-12d3-a456-426614174001',
-        name: l10n.liters,
-        abbreviation: l10n.litersAbbreviation,
-      );
-
-  static RecipeIngredientQuantityModifier grams(AppLocalizations l10n) =>
-      RecipeIngredientQuantityModifier(
-        id: '123e4567-e89b-12d3-a456-426614174002',
-        name: l10n.grams,
-        abbreviation: l10n.gramsAbbreviation,
-      );
-
-  static RecipeIngredientQuantityModifier kilograms(AppLocalizations l10n) =>
-      RecipeIngredientQuantityModifier(
-        id: '123e4567-e89b-12d3-a456-426614174003',
-        name: l10n.kilograms,
-        abbreviation: l10n.kilogramsAbbreviation,
-      );
-
-  static RecipeIngredientQuantityModifier teaspoons(AppLocalizations l10n) =>
-      RecipeIngredientQuantityModifier(
-        id: '123e4567-e89b-12d3-a456-426614174004',
-        name: l10n.teaspoons,
-        abbreviation: l10n.teaspoonsAbbreviation,
-      );
-
-  static RecipeIngredientQuantityModifier tablespoons(AppLocalizations l10n) =>
-      RecipeIngredientQuantityModifier(
-        id: '123e4567-e89b-12d3-a456-426614174005',
-        name: l10n.tablespoons,
-        abbreviation: l10n.tablespoonsAbbreviation,
-      );
-
-  static RecipeIngredientQuantityModifier cups(AppLocalizations l10n) =>
-      RecipeIngredientQuantityModifier(
-        id: '123e4567-e89b-12d3-a456-426614174006',
-        name: l10n.cups,
-        abbreviation: l10n.cupsAbbreviation,
-      );
-
-  static RecipeIngredientQuantityModifier ounces(AppLocalizations l10n) =>
-      RecipeIngredientQuantityModifier(
-        id: '123e4567-e89b-12d3-a456-426614174007',
-        name: l10n.ounces,
-        abbreviation: l10n.ouncesAbbreviation,
-      );
-
-  static RecipeIngredientQuantityModifier pounds(AppLocalizations l10n) =>
-      RecipeIngredientQuantityModifier(
-        id: '123e4567-e89b-12d3-a456-426614174008',
-        name: l10n.pounds,
-        abbreviation: l10n.poundsAbbreviation,
-      );
-
-  static RecipeIngredientQuantityModifier pieces(AppLocalizations l10n) =>
-      RecipeIngredientQuantityModifier(
-        id: '123e4567-e89b-12d3-a456-426614174009',
-        name: l10n.pieces,
-        abbreviation: l10n.piecesAbbreviation,
-      );
-
-  static RecipeIngredientQuantityModifier slices(AppLocalizations l10n) =>
-      RecipeIngredientQuantityModifier(
-        id: '123e4567-e89b-12d3-a456-426614174010',
-        name: l10n.slices,
-        abbreviation: l10n.slicesAbbreviation,
-      );
-
-  static RecipeIngredientQuantityModifier pinches(AppLocalizations l10n) =>
-      RecipeIngredientQuantityModifier(
-        id: '123e4567-e89b-12d3-a456-426614174011',
-        name: l10n.pinches,
-        abbreviation: l10n.pinchesAbbreviation,
-      );
+  String toLocalizedName(AppLocalizations l10n) {
+    switch (this) {
+      case RecipeIngredientQuantityModifier.milliliters:
+        return l10n.milliliters;
+      case RecipeIngredientQuantityModifier.liters:
+        return l10n.liters;
+      case RecipeIngredientQuantityModifier.grams:
+        return l10n.grams;
+      case RecipeIngredientQuantityModifier.kilograms:
+        return l10n.kilograms;
+      case RecipeIngredientQuantityModifier.teaspoons:
+        return l10n.teaspoons;
+      case RecipeIngredientQuantityModifier.tablespoons:
+        return l10n.tablespoons;
+      case RecipeIngredientQuantityModifier.cups:
+        return l10n.cups;
+      case RecipeIngredientQuantityModifier.ounces:
+        return l10n.ounces;
+      case RecipeIngredientQuantityModifier.pounds:
+        return l10n.pounds;
+      case RecipeIngredientQuantityModifier.pieces:
+        return l10n.pieces;
+      case RecipeIngredientQuantityModifier.slices:
+        return l10n.slices;
+      case RecipeIngredientQuantityModifier.pinches:
+        return l10n.pinches;
+    }
+  }
 }
 
 @freezed
