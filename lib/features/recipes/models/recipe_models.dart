@@ -6,9 +6,7 @@ part "recipe_models.freezed.dart";
 part "recipe_models.g.dart";
 
 @freezed
-class RecipeIngredientQuantityModifier
-    with _$RecipeIngredientQuantityModifier
-    implements Identifiable {
+class RecipeIngredientQuantityModifier with _$RecipeIngredientQuantityModifier {
   const factory RecipeIngredientQuantityModifier({
     /// The unique identifier of the recipe ingredient quantity.
     required String id,
@@ -108,11 +106,6 @@ class RecipeIngredientQuantityModifier
         name: l10n.pinches,
         abbreviation: l10n.pinchesAbbreviation,
       );
-
-  @override
-  String getId() {
-    return id;
-  }
 }
 
 @freezed
@@ -158,5 +151,10 @@ class Recipe with _$Recipe implements Identifiable {
   @override
   String getId() {
     return id;
+  }
+
+  @override
+  DateTime getLastModified() {
+    return lastModified;
   }
 }
