@@ -5,6 +5,7 @@ import 'package:mealtime/models/identifiable.dart';
 part "recipe_models.freezed.dart";
 part "recipe_models.g.dart";
 
+// TODO: Transform this to an enum, so that only the name will be stored in the json
 @freezed
 class RecipeIngredientQuantityModifier with _$RecipeIngredientQuantityModifier {
   const factory RecipeIngredientQuantityModifier({

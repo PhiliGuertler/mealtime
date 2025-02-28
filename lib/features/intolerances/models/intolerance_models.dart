@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:mealtime/features/ingredients/models/ingredients_models.dart';
 import 'package:mealtime/l10n/generated/app_localizations.dart';
 import 'package:mealtime/models/identifiable.dart';
 
