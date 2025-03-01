@@ -69,3 +69,22 @@ FutureOr<Ingredient> ingredientById(Ref ref, String id) async {
     throw Exception("No ingredient with id '$id' found");
   }
 }
+
+@riverpod
+FutureOr<List<IngredientCategory>> ingredientCategoriesOfIngredient(
+    Ref ref, String ingredientId) async {
+  final ingredient =
+      await ref.watch(ingredientByIdProvider(ingredientId).future);
+
+  List<Future<IngredientCategory>> result = ingredient.categoryIds
+      .map((categoryId) =>
+          ref.watch(ingredientCategoryByIdProvider(categoryId).future))
+      .toList();
+
+  List<IngredientCategory> realResult = [];
+  for (final future in result) {
+    realResult.add(await future);
+  }
+
+  return realResult;
+}
