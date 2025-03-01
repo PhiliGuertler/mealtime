@@ -102,6 +102,9 @@ class Ingredient with _$Ingredient implements Identifiable {
     /// last modified timestamp
     required DateTime lastModified,
 
+    /// created at timestamp
+    required DateTime createdAt,
+
     /// Name of the ingredient
     required String name,
 
@@ -113,14 +116,17 @@ class Ingredient with _$Ingredient implements Identifiable {
 
     /// Ingredients that make up this ingredient, e.g. "chocolate" is made up of "cocoa" and "sugar"
     /// Will only be set if categories contains IngredientCategory.compound
-    @Default([]) List<String> compoundIngredients,
+    @Default([]) List<String> compoundIngredientIds,
 
     /// Path to an image of the ingredient that can be uploaded if the user wants to
     String? imagePath,
+
+    /// Notes on this ingredient
+    String? notes,
   }) = _Ingredient;
 
   bool isCompound() {
-    return compoundIngredients.isNotEmpty;
+    return compoundIngredientIds.isNotEmpty;
   }
 
   const Ingredient._();
@@ -136,5 +142,10 @@ class Ingredient with _$Ingredient implements Identifiable {
   @override
   DateTime getLastModified() {
     return lastModified;
+  }
+
+  @override
+  DateTime getCreatedAt() {
+    return createdAt;
   }
 }

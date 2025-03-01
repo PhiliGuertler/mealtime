@@ -95,6 +95,9 @@ class RecipeIngredient with _$RecipeIngredient {
 
     /// The modifier for the quantity of the ingredient.
     required RecipeIngredientQuantityModifier quantityModifier,
+
+    /// Notes on this ingredient in this recipe
+    String? notes,
   }) = _RecipeIngredient;
   const RecipeIngredient._();
 
@@ -111,6 +114,9 @@ class Recipe with _$Recipe implements Identifiable {
     /// Last time the recipe was modified
     required DateTime lastModified,
 
+    /// Last time the recipe was modified
+    required DateTime createdAt,
+
     /// The name of the recipe.
     required String name,
 
@@ -119,6 +125,15 @@ class Recipe with _$Recipe implements Identifiable {
 
     /// The list of ingredients in the recipe.
     required List<RecipeIngredient> ingredients,
+
+    /// A list of strings, where each entry is a step of the recipe.
+    required List<String> stepDescriptions,
+
+    /// The path to an image of the meal that is created by this recipe
+    String? imagePath,
+
+    /// Notes on this recipe
+    String? notes,
   }) = _Recipe;
   const Recipe._();
 
@@ -132,5 +147,10 @@ class Recipe with _$Recipe implements Identifiable {
   @override
   DateTime getLastModified() {
     return lastModified;
+  }
+
+  @override
+  DateTime getCreatedAt() {
+    return createdAt;
   }
 }

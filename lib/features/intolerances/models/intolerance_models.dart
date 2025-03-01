@@ -54,6 +54,9 @@ class Intolerance with _$Intolerance implements Identifiable {
     /// Last time the intolerance was modified
     required DateTime lastModified,
 
+    /// Creation date of this intolerance
+    required DateTime createdAt,
+
     /// The name of the intolerance.
     required String name,
 
@@ -62,6 +65,9 @@ class Intolerance with _$Intolerance implements Identifiable {
 
     /// Whether the intolerance is a whitelist or blacklist
     @Default(false) bool isWhitelist,
+
+    /// Notes on this intolerance
+    String? notes,
   }) = _Intolerance;
   const Intolerance._();
 
@@ -76,5 +82,10 @@ class Intolerance with _$Intolerance implements Identifiable {
   @override
   DateTime getLastModified() {
     return lastModified;
+  }
+
+  @override
+  DateTime getCreatedAt() {
+    return createdAt;
   }
 }
