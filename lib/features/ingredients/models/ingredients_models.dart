@@ -20,6 +20,7 @@ class IngredientCategory with _$IngredientCategory implements Identifiable {
     /// Name of the category
     required String name,
   }) = _IngredientCategory;
+  const IngredientCategory._();
 
   factory IngredientCategory.fromJson(Map<String, dynamic> json) =>
       _$IngredientCategoryFromJson(json);

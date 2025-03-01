@@ -17,6 +17,7 @@ class IngredientCategoryv1 with _$IngredientCategoryv1 {
     required DateTime lastModified,
     required DateTime createdAt,
   }) = _IngredientCategoryv1;
+  const IngredientCategoryv1._();
 
   factory IngredientCategoryv1.fromJson(Map<String, dynamic> json) =>
       _$IngredientCategoryv1FromJson(json);
