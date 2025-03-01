@@ -24,6 +24,21 @@ class IngredientCategory with _$IngredientCategory implements Identifiable {
   factory IngredientCategory.fromJson(Map<String, dynamic> json) =>
       _$IngredientCategoryFromJson(json);
 
+  @override
+  DateTime getCreatedAt() {
+    return createdAt;
+  }
+
+  @override
+  String getId() {
+    return id;
+  }
+
+  @override
+  DateTime getLastModified() {
+    return lastModified;
+  }
+
   // ### Predefined categories ############################################## //
 
   static IngredientCategory alcohol(AppLocalizations l10n) {
@@ -164,21 +179,6 @@ class IngredientCategory with _$IngredientCategory implements Identifiable {
       lastModified: now,
       createdAt: now,
     );
-  }
-
-  @override
-  DateTime getCreatedAt() {
-    return createdAt;
-  }
-
-  @override
-  String getId() {
-    return id;
-  }
-
-  @override
-  DateTime getLastModified() {
-    return lastModified;
   }
 }
 

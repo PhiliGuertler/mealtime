@@ -14,13 +14,20 @@ class IngredientCategoryv1 with _$IngredientCategoryv1 {
   const factory IngredientCategoryv1({
     required String id,
     required String name,
+    required DateTime lastModified,
+    required DateTime createdAt,
   }) = _IngredientCategoryv1;
 
   factory IngredientCategoryv1.fromJson(Map<String, dynamic> json) =>
       _$IngredientCategoryv1FromJson(json);
 
   IngredientCategory migrate() {
-    return IngredientCategory(id: id, name: name);
+    return IngredientCategory(
+      id: id,
+      name: name,
+      lastModified: lastModified,
+      createdAt: createdAt,
+    );
   }
 }
 
@@ -170,6 +177,7 @@ class Recipev1 with _$Recipev1 {
 @freezed
 class Databasev1 with _$Databasev1 {
   const factory Databasev1({
+    required List<IngredientCategoryv1> ingredientCategories,
     required List<Ingredientv1> ingredients,
     required List<Intolerancev1> intolerances,
     required List<Recipev1> recipes,
@@ -180,6 +188,11 @@ class Databasev1 with _$Databasev1 {
       _$Databasev1FromJson(json);
 
   Database migrate() {
+    final List<IngredientCategory> ingredientCategories = this
+        .ingredientCategories
+        .map((category) => category.migrate())
+        .toList();
+
     final List<Ingredient> ingredients =
         this.ingredients.map((ingredient) => ingredient.migrate()).toList();
 
@@ -190,7 +203,11 @@ class Databasev1 with _$Databasev1 {
         this.recipes.map((recipe) => recipe.migrate()).toList();
 
     return Database(
-        ingredients: ingredients, intolerances: intolerances, recipes: recipes);
+      ingredientCategories: ingredientCategories,
+      ingredients: ingredients,
+      intolerances: intolerances,
+      recipes: recipes,
+    );
   }
 }
 
