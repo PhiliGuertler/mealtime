@@ -85,7 +85,39 @@
             "createdAt": "2025-03-01T20:37:59"
         }
     ],
-    "ingredients": [],
+    "ingredients": [
+        {
+            "id": "550e8401-e29b-41d4-a716-446655440001",
+            "lastModified": "2025-03-01T20:37:59",
+            "createdAt": "2025-03-01T20:37:59",
+            "name": "salt",
+            "aliases": [
+                "Salz", "sale", "Salz (iodiert)"
+            ],
+            "categoryIds": [
+                "550e8400-e29b-41d4-a716-446655440011"
+            ],
+            "compoundIngredientIds": [],
+            "imagePath": null,
+            "notes": null
+        },
+        {
+            "id": "550e8401-e29b-41d4-a716-446655440002",
+            "lastModified": "2025-03-01T20:37:59",
+            "createdAt": "2025-03-01T20:37:59",
+            "name": "Gouda",
+            "aliases": [
+                "Gouda jung"
+            ],
+            "categoryIds": [
+                "550e8400-e29b-41d4-a716-446655440002",
+                "550e8400-e29b-41d4-a716-446655440042"
+            ],
+            "compoundIngredientIds": [],
+            "imagePath": null,
+            "notes": null
+        }
+    ],
     "recipes": [],
     "intolerances": []
 }
