@@ -5,11 +5,19 @@ import 'package:mealtime/models/identifiable.dart';
 part 'ingredients_models.freezed.dart';
 part 'ingredients_models.g.dart';
 
-// TODO: Add categories to the database!
 @freezed
-class IngredientCategory with _$IngredientCategory {
+class IngredientCategory with _$IngredientCategory implements Identifiable {
   const factory IngredientCategory({
+    /// Id of the category
     required String id,
+
+    /// last modified date
+    required DateTime lastModified,
+
+    /// created at date
+    required DateTime createdAt,
+
+    /// Name of the category
     required String name,
   }) = _IngredientCategory;
 
@@ -18,79 +26,160 @@ class IngredientCategory with _$IngredientCategory {
 
   // ### Predefined categories ############################################## //
 
-  static IngredientCategory alcohol(AppLocalizations l10n) =>
-      IngredientCategory(
-        id: '550e8400-e29b-41d4-a716-446655440000',
-        name: l10n.alcohol,
-      );
+  static IngredientCategory alcohol(AppLocalizations l10n) {
+    final now = DateTime.now();
+    return IngredientCategory(
+      id: '550e8400-e29b-41d4-a716-446655440000',
+      name: l10n.alcohol,
+      lastModified: now,
+      createdAt: now,
+    );
+  }
 
-  static IngredientCategory beverage(AppLocalizations l10n) =>
-      IngredientCategory(
-        id: '550e8400-e29b-41d4-a716-446655440001',
-        name: l10n.beverage,
-      );
+  static IngredientCategory beverage(AppLocalizations l10n) {
+    final now = DateTime.now();
+    return IngredientCategory(
+      id: '550e8400-e29b-41d4-a716-446655440001',
+      name: l10n.beverage,
+      lastModified: now,
+      createdAt: now,
+    );
+  }
 
-  static IngredientCategory dairy(AppLocalizations l10n) => IngredientCategory(
-        id: '550e8400-e29b-41d4-a716-446655440002',
-        name: l10n.dairy,
-      );
+  static IngredientCategory dairy(AppLocalizations l10n) {
+    final now = DateTime.now();
+    return IngredientCategory(
+      id: '550e8400-e29b-41d4-a716-446655440002',
+      name: l10n.dairy,
+      lastModified: now,
+      createdAt: now,
+    );
+  }
 
-  static IngredientCategory cheese(AppLocalizations l10n) => IngredientCategory(
-        id: '550e8400-e29b-41d4-a716-446655440042',
-        name: l10n.cheese,
-      );
+  static IngredientCategory cheese(AppLocalizations l10n) {
+    final now = DateTime.now();
+    return IngredientCategory(
+      id: '550e8400-e29b-41d4-a716-446655440042',
+      name: l10n.cheese,
+      lastModified: now,
+      createdAt: now,
+    );
+  }
 
-  static IngredientCategory fish(AppLocalizations l10n) => IngredientCategory(
-        id: '550e8400-e29b-41d4-a716-446655440003',
-        name: l10n.fish,
-      );
+  static IngredientCategory fish(AppLocalizations l10n) {
+    final now = DateTime.now();
+    return IngredientCategory(
+      id: '550e8400-e29b-41d4-a716-446655440003',
+      name: l10n.fish,
+      lastModified: now,
+      createdAt: now,
+    );
+  }
 
-  static IngredientCategory fruit(AppLocalizations l10n) => IngredientCategory(
-        id: '550e8400-e29b-41d4-a716-446655440004',
-        name: l10n.fruit,
-      );
+  static IngredientCategory fruit(AppLocalizations l10n) {
+    final now = DateTime.now();
+    return IngredientCategory(
+      id: '550e8400-e29b-41d4-a716-446655440004',
+      name: l10n.fruit,
+      lastModified: now,
+      createdAt: now,
+    );
+  }
 
-  static IngredientCategory grain(AppLocalizations l10n) => IngredientCategory(
-        id: '550e8400-e29b-41d4-a716-446655440005',
-        name: l10n.grain,
-      );
+  static IngredientCategory grain(AppLocalizations l10n) {
+    final now = DateTime.now();
+    return IngredientCategory(
+      id: '550e8400-e29b-41d4-a716-446655440005',
+      name: l10n.grain,
+      lastModified: now,
+      createdAt: now,
+    );
+  }
 
-  static IngredientCategory herb(AppLocalizations l10n) => IngredientCategory(
-        id: '550e8400-e29b-41d4-a716-446655440006',
-        name: l10n.herb,
-      );
+  static IngredientCategory herb(AppLocalizations l10n) {
+    final now = DateTime.now();
+    return IngredientCategory(
+      id: '550e8400-e29b-41d4-a716-446655440006',
+      name: l10n.herb,
+      lastModified: now,
+      createdAt: now,
+    );
+  }
 
-  static IngredientCategory meat(AppLocalizations l10n) => IngredientCategory(
-        id: '550e8400-e29b-41d4-a716-446655440007',
-        name: l10n.meat,
-      );
+  static IngredientCategory meat(AppLocalizations l10n) {
+    final now = DateTime.now();
+    return IngredientCategory(
+      id: '550e8400-e29b-41d4-a716-446655440007',
+      name: l10n.meat,
+      lastModified: now,
+      createdAt: now,
+    );
+  }
 
-  static IngredientCategory mushroom(AppLocalizations l10n) =>
-      IngredientCategory(
-        id: '550e8400-e29b-41d4-a716-446655440008',
-        name: l10n.mushroom,
-      );
+  static IngredientCategory mushroom(AppLocalizations l10n) {
+    final now = DateTime.now();
+    return IngredientCategory(
+      id: '550e8400-e29b-41d4-a716-446655440008',
+      name: l10n.mushroom,
+      lastModified: now,
+      createdAt: now,
+    );
+  }
 
-  static IngredientCategory nuts(AppLocalizations l10n) => IngredientCategory(
-        id: '550e8400-e29b-41d4-a716-446655440009',
-        name: l10n.nuts,
-      );
+  static IngredientCategory nuts(AppLocalizations l10n) {
+    final now = DateTime.now();
+    return IngredientCategory(
+      id: '550e8400-e29b-41d4-a716-446655440009',
+      name: l10n.nuts,
+      lastModified: now,
+      createdAt: now,
+    );
+  }
 
-  static IngredientCategory oil(AppLocalizations l10n) => IngredientCategory(
-        id: '550e8400-e29b-41d4-a716-446655440010',
-        name: l10n.oil,
-      );
+  static IngredientCategory oil(AppLocalizations l10n) {
+    final now = DateTime.now();
+    return IngredientCategory(
+      id: '550e8400-e29b-41d4-a716-446655440010',
+      name: l10n.oil,
+      lastModified: now,
+      createdAt: now,
+    );
+  }
 
-  static IngredientCategory spice(AppLocalizations l10n) => IngredientCategory(
-        id: '550e8400-e29b-41d4-a716-446655440011',
-        name: l10n.spice,
-      );
+  static IngredientCategory spice(AppLocalizations l10n) {
+    final now = DateTime.now();
+    return IngredientCategory(
+      id: '550e8400-e29b-41d4-a716-446655440011',
+      name: l10n.spice,
+      lastModified: now,
+      createdAt: now,
+    );
+  }
 
-  static IngredientCategory vegetable(AppLocalizations l10n) =>
-      IngredientCategory(
-        id: '550e8400-e29b-41d4-a716-446655440012',
-        name: l10n.vegetable,
-      );
+  static IngredientCategory vegetable(AppLocalizations l10n) {
+    final now = DateTime.now();
+    return IngredientCategory(
+      id: '550e8400-e29b-41d4-a716-446655440012',
+      name: l10n.vegetable,
+      lastModified: now,
+      createdAt: now,
+    );
+  }
+
+  @override
+  DateTime getCreatedAt() {
+    return createdAt;
+  }
+
+  @override
+  String getId() {
+    return id;
+  }
+
+  @override
+  DateTime getLastModified() {
+    return lastModified;
+  }
 }
 
 @freezed

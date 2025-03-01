@@ -73,14 +73,39 @@ void addMissingItems<T extends Identifiable>(
 @freezed
 class Database with _$Database {
   const factory Database({
+    required List<IngredientCategory> ingredientCategories,
     required List<Ingredient> ingredients,
     required List<Intolerance> intolerances,
     required List<Recipe> recipes,
+    // TODO: Add user uploaded images to the database. They may be stored in a separate directory?
   }) = _Database;
   const Database._();
 
   factory Database.fromJson(Map<String, dynamic> json) =>
       _$DatabaseFromJson(json);
+
+  // ######################################################################## //
+  // ### IngredientCategory ################################################# //
+
+  /// Updates an ingredient by overwriting it.
+  /// If no ingredient with the given id exists, an Exception is thrown.
+  Database updateIngredientCategories(String id, IngredientCategory update) {
+    return copyWith(
+        ingredientCategories: updateItem(id, update, ingredientCategories));
+  }
+
+  /// Removes an ingredient from the list by its id
+  /// If no ingredient with the same id exists, an Exception is thrown.
+  Database removeIngredientCategory(String id) {
+    return copyWith(ingredientCategories: removeItem(id, ingredientCategories));
+  }
+
+  /// Adds an ingredient to the list
+  /// If an ingredient with the same id already exists, an Exception is thrown.
+  Database addIngredientCategory(IngredientCategory category) {
+    return copyWith(
+        ingredientCategories: addItem(category, ingredientCategories));
+  }
 
   // ######################################################################## //
   // ### Ingredients ######################################################## //
@@ -153,6 +178,8 @@ class Database with _$Database {
   /// If no item matches the id of an input item it won't be added, instead nothing happens.
   Database updateDatabaseByLastModified(Database database) {
     return copyWith(
+      ingredientCategories: updateByLastModified(
+          ingredientCategories, database.ingredientCategories),
       ingredients: updateByLastModified(ingredients, database.ingredients),
       intolerances: updateByLastModified(intolerances, database.intolerances),
       recipes: updateByLastModified(recipes, database.recipes),
@@ -164,6 +191,8 @@ class Database with _$Database {
   Database addMissingDatabaseEntries(Database database) {
     Database updatedDatabase = this;
 
+    addMissingItems(ingredientCategories, database.ingredientCategories,
+        (item) => updatedDatabase.addIngredientCategory(item));
     addMissingItems(ingredients, database.ingredients,
         (item) => updatedDatabase.addIngredient(item));
     addMissingItems(intolerances, database.intolerances,
