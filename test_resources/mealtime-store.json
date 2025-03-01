@@ -90,12 +90,12 @@
             "id": "550e8401-e29b-41d4-a716-446655440001",
             "lastModified": "2025-03-01T20:37:59",
             "createdAt": "2025-03-01T20:37:59",
-            "name": "salt",
+            "name": "cocoa",
             "aliases": [
-                "Salz", "sale", "Salz (iodiert)"
+                "Kakao"
             ],
             "categoryIds": [
-                "550e8400-e29b-41d4-a716-446655440011"
+                "550e8400-e29b-41d4-a716-446655440012"
             ],
             "compoundIngredientIds": [],
             "imagePath": null,
@@ -103,6 +103,56 @@
         },
         {
             "id": "550e8401-e29b-41d4-a716-446655440002",
+            "lastModified": "2025-03-01T20:37:59",
+            "createdAt": "2025-03-01T20:37:59",
+            "name": "sugar",
+            "aliases": [
+                "Zucker"
+            ],
+            "categoryIds": [
+                "550e8400-e29b-41d4-a716-446655440012"
+            ],
+            "compoundIngredientIds": [],
+            "imagePath": null,
+            "notes": null
+        },
+        {
+            "id": "550e8401-e29b-41d4-a716-446655440003",
+            "lastModified": "2025-03-01T20:37:59",
+            "createdAt": "2025-03-01T20:37:59",
+            "name": "milk",
+            "aliases": [
+                "Milch"
+            ],
+            "categoryIds": [
+                "550e8400-e29b-41d4-a716-446655440011"
+            ],
+            "compoundIngredientIds": [],
+            "imagePath": null,
+            "notes": "Von Kühen"
+        },
+        {
+            "id": "550e8401-e29b-41d4-a716-446655440004",
+            "lastModified": "2025-03-01T20:37:59",
+            "createdAt": "2025-03-01T20:37:59",
+            "name": "milk chocolate",
+            "aliases": [
+                "Milchschokolade", "Vollmilchschokolade"
+            ],
+            "categoryIds": [
+                "550e8400-e29b-41d4-a716-446655440011",
+                "550e8400-e29b-41d4-a716-446655440011"
+            ],
+            "compoundIngredientIds": [
+                "550e8401-e29b-41d4-a716-446655440001",
+                "550e8401-e29b-41d4-a716-446655440002",
+                "550e8401-e29b-41d4-a716-446655440003"
+            ],
+            "imagePath": null,
+            "notes": null
+        },
+        {
+            "id": "550e8401-e29b-41d4-a716-446655440009",
             "lastModified": "2025-03-01T20:37:59",
             "createdAt": "2025-03-01T20:37:59",
             "name": "Gouda",
@@ -115,9 +165,36 @@
             ],
             "compoundIngredientIds": [],
             "imagePath": null,
-            "notes": null
+            "notes": "Nicht zu verwechseln mit Gouda alt"
         }
     ],
-    "recipes": [],
+    "recipes": [
+        {
+            "id": "550e8404-e29b-41d4-a716-446655440001",
+            "lastModified": "2025-03-01T20:37:59",
+            "createdAt": "2025-03-01T20:37:59",
+            "name": "Fake chocolate muffins",
+            "description": "An example recipe that works pretty much like the real deal... for sure!",
+            "ingredients": [
+                {
+                    "ingredientId": "550e8401-e29b-41d4-a716-446655440004",
+                    "quantity": 1.4,
+                    "quantityModifier": "kg"
+                },
+                {
+                    "ingredientId": "550e8401-e29b-41d4-a716-446655440003",
+                    "quantity": 3,
+                    "quantityModifier": "l"
+                }
+            ],
+            "stepDescriptions": [
+                "Put the things in the thing",
+                "Stir the thing",
+                "Profit"
+            ],
+            "imagePath": null,
+            "notes": "Easy to prepare this on your own, isn't it?"
+        }
+    ],
     "intolerances": []
 }
