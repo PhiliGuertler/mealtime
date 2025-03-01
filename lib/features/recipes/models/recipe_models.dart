@@ -1,7 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:mealtime/l10n/generated/app_localizations.dart';
 import 'package:mealtime/models/identifiable.dart';
-import 'package:json_annotation/json_annotation.dart';
 
 part "recipe_models.freezed.dart";
 part "recipe_models.g.dart";

@@ -9,16 +9,34 @@ part 'database_migrator.g.dart';
 
 // ### Ingredient ################################################################# //
 
+@freezed
+class IngredientCategoryv1 with _$IngredientCategoryv1 {
+  const factory IngredientCategoryv1({
+    required String id,
+    required String name,
+  }) = _IngredientCategoryv1;
+
+  factory IngredientCategoryv1.fromJson(Map<String, dynamic> json) =>
+      _$IngredientCategoryv1FromJson(json);
+
+  IngredientCategory migrate() {
+    return IngredientCategory(id: id, name: name);
+  }
+}
+
 /// Ingredient
 @freezed
 class Ingredientv1 with _$Ingredientv1 {
   const factory Ingredientv1({
     required String id,
     required DateTime lastModified,
+    required DateTime createdAt,
     required String name,
     required List<String> aliases,
-    required List<IngredientCategory> categories,
-    required List<String> compoundIngredients,
+    required List<String> categoryIds,
+    required List<String> compoundIngredientIds,
+    required String? imagePath,
+    required String? notes,
   }) = _Ingredientv1;
   const Ingredientv1._();
 
@@ -29,10 +47,13 @@ class Ingredientv1 with _$Ingredientv1 {
     return Ingredient(
       id: id,
       lastModified: lastModified,
+      createdAt: createdAt,
       name: name,
       aliases: aliases,
-      categories: categories,
-      compoundIngredients: compoundIngredients,
+      categoryIds: categoryIds,
+      compoundIngredientIds: compoundIngredientIds,
+      imagePath: imagePath,
+      notes: notes,
     );
   }
 }
@@ -63,9 +84,11 @@ class Intolerancev1 with _$Intolerancev1 {
   const factory Intolerancev1({
     required String id,
     required DateTime lastModified,
+    required DateTime createdAt,
     required String name,
     required List<IngredientReactionv1> reactions,
     required bool isWhitelist,
+    required String? notes,
   }) = _Intolerancev1;
   const Intolerancev1._();
 
@@ -76,8 +99,11 @@ class Intolerancev1 with _$Intolerancev1 {
     return Intolerance(
       id: id,
       lastModified: lastModified,
+      createdAt: createdAt,
       name: name,
       reactions: reactions.map((reaction) => reaction.migrate()).toList(),
+      isWhitelist: isWhitelist,
+      notes: notes,
     );
   }
 }
@@ -109,9 +135,13 @@ class Recipev1 with _$Recipev1 {
   const factory Recipev1({
     required String id,
     required DateTime lastModified,
+    required DateTime createdAt,
     required String name,
     required String description,
     required List<RecipeIngredientv1> ingredients,
+    required List<String> stepDescriptions,
+    required String? imagePath,
+    required String? notes,
   }) = _Recipev1;
   const Recipev1._();
 
@@ -122,10 +152,14 @@ class Recipev1 with _$Recipev1 {
     return Recipe(
       id: id,
       lastModified: lastModified,
+      createdAt: createdAt,
       name: name,
       description: description,
       ingredients:
           ingredients.map((ingredient) => ingredient.migrate()).toList(),
+      stepDescriptions: stepDescriptions,
+      imagePath: imagePath,
+      notes: notes,
     );
   }
 }
