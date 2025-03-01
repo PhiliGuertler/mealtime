@@ -1,0 +1,10 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "clean build_runner files",
+            "type": "shell",
+            "command": "rm lib/**/*.g.dart && rm lib/**/*.freezed.dart"
+        }
+    ]
+}

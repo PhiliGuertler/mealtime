@@ -20,7 +20,12 @@ FutureOr<Database> database(Ref ref) async {
         jsonDecode(content) as Map<String, dynamic>;
     return DatabaseMigrator.loadAndMigrateFromJson(jsonMap);
   }
-  return const Database(ingredients: []);
+  return const Database(
+    ingredients: [],
+    recipes: [],
+    intolerances: [],
+    ingredientCategories: [],
+  );
 }
 
 @riverpod

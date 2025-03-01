@@ -1,31 +1,32 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:mealtime/features/ingredients/models/ingredients_models.dart';
 import 'package:mealtime/l10n/generated/app_localizations.dart';
+import 'package:mealtime/models/identifiable.dart';
 
 part "intolerance_models.freezed.dart";
 part "intolerance_models.g.dart";
 
-enum IntoleranceReaction {
+enum IntoleranceReactionSeverity {
   none,
   fineInModeration,
   unpleasant,
   painful,
   dangerous,
-  unknown;
+  unknown,
+  ;
 
   String toLocaleString(AppLocalizations l10n) {
     switch (this) {
-      case IntoleranceReaction.none:
+      case IntoleranceReactionSeverity.none:
         return l10n.none;
-      case IntoleranceReaction.fineInModeration:
+      case IntoleranceReactionSeverity.fineInModeration:
         return l10n.fineInModeration;
-      case IntoleranceReaction.unpleasant:
+      case IntoleranceReactionSeverity.unpleasant:
         return l10n.unpleasant;
-      case IntoleranceReaction.painful:
+      case IntoleranceReactionSeverity.painful:
         return l10n.painful;
-      case IntoleranceReaction.dangerous:
+      case IntoleranceReactionSeverity.dangerous:
         return l10n.dangerous;
-      case IntoleranceReaction.unknown:
+      case IntoleranceReactionSeverity.unknown:
         return l10n.unknown;
     }
   }
@@ -35,8 +36,8 @@ enum IntoleranceReaction {
 class IngredientReaction with _$IngredientReaction {
   const factory IngredientReaction({
     /// A list of ingredients that cause the intolerance when combined.
-    required List<Ingredient> ingredients,
-    required Intolerance intolerance,
+    required List<String> ingredientIds,
+    required IntoleranceReactionSeverity severity,
   }) = _IngredientReaction;
   const IngredientReaction._();
 
@@ -45,13 +46,16 @@ class IngredientReaction with _$IngredientReaction {
 }
 
 @freezed
-class Intolerance with _$Intolerance {
+class Intolerance with _$Intolerance implements Identifiable {
   const factory Intolerance({
     /// The unique identifier of the intolerance.
     required String id,
 
     /// Last time the intolerance was modified
     required DateTime lastModified,
+
+    /// Creation date of this intolerance
+    required DateTime createdAt,
 
     /// The name of the intolerance.
     required String name,
@@ -61,9 +65,27 @@ class Intolerance with _$Intolerance {
 
     /// Whether the intolerance is a whitelist or blacklist
     @Default(false) bool isWhitelist,
+
+    /// Notes on this intolerance
+    String? notes,
   }) = _Intolerance;
   const Intolerance._();
 
   factory Intolerance.fromJson(Map<String, dynamic> json) =>
       _$IntoleranceFromJson(json);
+
+  @override
+  String getId() {
+    return id;
+  }
+
+  @override
+  DateTime getLastModified() {
+    return lastModified;
+  }
+
+  @override
+  DateTime getCreatedAt() {
+    return createdAt;
+  }
 }
