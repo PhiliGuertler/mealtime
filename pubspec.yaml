@@ -44,6 +44,7 @@ dependencies:
   misc_utils:
     path: packages/misc_utils
   package_info_plus: ^8.2.1
+  path_provider: ^2.1.5
   riverpod: ^2.6.1
   riverpod_annotation: ^2.6.1
   theming:
@@ -87,6 +88,8 @@ flutter:
   assets:
     - assets/app/
     - assets/images/
+    - test_resources/mealtime-store.json
+
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg

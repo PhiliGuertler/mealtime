@@ -196,5 +196,29 @@
             "notes": "Easy to prepare this on your own, isn't it?"
         }
     ],
-    "intolerances": []
+    "intolerances": [
+        {
+            "id": "550e8405-e29b-41d4-a716-446655440001",
+            "lastModified": "2025-03-01T20:37:59",
+            "createdAt": "2025-03-01T20:37:59",
+            "name": "Killer Intolerance",
+            "reactions": [
+                {
+                    "ingredientIds": [
+                        "550e8401-e29b-41d4-a716-446655440003"
+                    ],
+                    "severity": "none"
+                },
+                {
+                    "ingredientIds": [
+                        "550e8401-e29b-41d4-a716-446655440003",
+                        "550e8401-e29b-41d4-a716-446655440001"
+                    ],
+                    "severity": "painful"
+                }
+            ],
+            "isWhitelist": false,
+            "notes": "Somehow only a combination of ingredients is evil"
+        }
+    ]
 }
