@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mealtime/features/intolerances/widgets/ingredient_display.dart';
 import 'package:mealtime/l10n/generated/app_localizations.dart';
 import 'package:mealtime/models/assets.dart';
 import 'package:mealtime/providers/ingredients/ingredients_provider.dart';
 import 'package:mealtime/utils/constants.dart';
 import 'package:mealtime/widgets/error_display.dart';
+import 'package:mealtime/widgets/skeletons/skeleton_list_tile.dart';
 import 'package:misc_utils/misc_utils.dart';
 
 class IngredientsScreen extends ConsumerWidget {
@@ -26,6 +28,7 @@ class IngredientsScreen extends ConsumerWidget {
           onRefresh: () => ref.refresh(ingredientsProvider.future),
           child: CustomScrollView(
             keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+            shrinkWrap: true,
             controller: scrollController,
             physics: !hasIngredients
                 ? const BouncingScrollPhysics(
@@ -58,10 +61,7 @@ class IngredientsScreen extends ConsumerWidget {
                   data: (ingredients) {
                     return ingredients.map(
                       (ingredient) => SliverToBoxAdapter(
-                        child: ListTile(
-                          title: Text(ingredient.name),
-                          subtitle: Text(ingredient.id),
-                        ),
+                        child: IngredientDisplay(ingredient: ingredient),
                       ),
                     );
                   },
@@ -75,7 +75,7 @@ class IngredientsScreen extends ConsumerWidget {
                   ],
                   loading: () => [
                     SliverList.builder(
-                      itemBuilder: (context, index) => const Skeleton()
+                      itemBuilder: (context, index) => const ListTileSkeleton()
                           .animate()
                           .fade(curve: Curves.easeOut, duration: 130.ms),
                       itemCount: 10,
